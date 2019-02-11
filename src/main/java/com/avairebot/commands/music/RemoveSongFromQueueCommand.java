@@ -92,7 +92,7 @@ public class RemoveSongFromQueueCommand extends Command {
     @Override
     public boolean onCommand(CommandMessage context, String[] args) {
         if (args.length == 0) {
-            return sendErrorMessage(context, context.i18n("error"));
+            return sendErrorMessage(context, context.i18n("brokenshouldntwork"));
         }
 
         GuildMusicManager musicManager = AudioHandler.getDefaultAudioHandler().getGuildAudioPlayer(context.getGuild());
