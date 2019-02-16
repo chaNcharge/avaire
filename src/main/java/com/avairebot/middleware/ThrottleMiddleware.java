@@ -58,50 +58,7 @@ public class ThrottleMiddleware extends Middleware {
 
     @Override
     public boolean handle(@Nonnull Message message, @Nonnull MiddlewareStack stack, String... args) {
-        if (args.length < 3) {
-            AvaIre.getLogger().warn(String.format(
-                "\"%s\" is parsing invalid amount of arguments to the throttle middleware, 3 arguments are required.", stack.getCommand()
-            ));
-            return stack.next();
-        }
-
-        ThrottleType type = ThrottleType.fromName(args[0]);
-
-        try {
-            int maxAttempts = NumberUtil.parseInt(args[1], 2);
-            int decaySeconds = NumberUtil.parseInt(args[2], 5);
-
-            String fingerprint = type.generateCacheString(message, stack);
-
-            ThrottleEntity entity = getEntityFromCache(fingerprint, maxAttempts, decaySeconds);
-            if (entity.getHits() >= maxAttempts) {
-                Carbon expires = type.equals(ThrottleType.USER)
-                    ? avaire.getBlacklist().getRatelimit().hit(type, message.getAuthor().getIdLong())
-                    : avaire.getBlacklist().getRatelimit().hit(type, message.getGuild().getIdLong());
-
-                if (expires != null) {
-                    avaire.getBlacklist().getRatelimit().sendBlacklistMessage(
-                        type.equals(ThrottleType.USER) ? message.getAuthor() : message.getChannel(), expires
-                    );
-                    return false;
-                }
-
-                return cancelCommandThrottleRequest(message, stack, entity);
-            }
-
-            boolean response = stack.next();
-
-            if (response) {
-                entity.incrementHit();
-            }
-
-            return response;
-        } catch (NumberFormatException e) {
-            AvaIre.getLogger().warn(String.format(
-                "Invalid integers given to throttle command by \"%s\", args: (%s, %s)", stack.getCommand().getName(), args[1], args[2]
-            ));
-        }
-        return false;
+        return stack.next();
     }
 
     private boolean cancelCommandThrottleRequest(Message message, MiddlewareStack stack, ThrottleEntity entity) {
