@@ -47,7 +47,7 @@ public class GithubChangesJob extends Job {
     @Override
     public void run() {
         handleTask((Task) avaire -> {
-            RequestFactory.makeGET("https://api.github.com/repos/avaire/avaire/commits")
+            RequestFactory.makeGET("https://api.github.com/repos/chaNcharge/avaire/commits")
                 .send((Consumer<Response>) response -> {
                     List service = (List) response.toService(List.class);
 
