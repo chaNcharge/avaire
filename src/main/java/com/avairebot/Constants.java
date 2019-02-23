@@ -50,9 +50,9 @@ public class Constants {
     public static final String PACKAGE_JOB_PATH = "com.avairebot.scheduler";
 
     // Emojis
-    public static final String EMOTE_ONLINE = "<:online:409043175009812490>";
-    public static final String EMOTE_AWAY = "<:away:409043175009812490>";
-    public static final String EMOTE_DND = "<:dnd:409043175009812490>";
+    public static final String EMOTE_ONLINE = "<:online:548980166282706955>";
+    public static final String EMOTE_AWAY = "<:away:548980166626377749>";
+    public static final String EMOTE_DND = "<:dnd:548980166223724577>";
 
     // Purchase Types
     public static final String RANK_BACKGROUND_PURCHASE_TYPE = "rank-background";
