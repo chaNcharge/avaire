@@ -43,12 +43,14 @@ public class Unknown extends Intent {
     @Override
     @SuppressWarnings("ConstantConditions")
     public void onIntent(CommandMessage context, AIResponse response) {
+        String nickname = context.getAuthor().getName();
+        if (context.getMessage().getChannelType().isGuild()) {
+            nickname = context.getMember().getEffectiveName();
+        }
         context.makeWarning(
             StringReplacementUtil.replaceAll(
                 response.getResult().getFulfillment().getSpeech(),
-                "!help", CommandHandler.getCommand(HelpCommand.class)
-                    .getCommand().generateCommandTrigger(context.getMessage())
-            )
-        ).queue();
+                "%nick%", nickname
+            )).queue();
     }
 }
