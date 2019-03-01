@@ -23,9 +23,7 @@ package com.avairebot.ai.intents;
 
 import ai.api.model.AIResponse;
 import com.avairebot.AvaIre;
-import com.avairebot.commands.CommandHandler;
 import com.avairebot.commands.CommandMessage;
-import com.avairebot.commands.help.HelpCommand;
 import com.avairebot.contracts.ai.Intent;
 import com.avairebot.utilities.StringReplacementUtil;
 
@@ -41,7 +39,6 @@ public class Unknown extends Intent {
     }
 
     @Override
-    @SuppressWarnings("ConstantConditions")
     public void onIntent(CommandMessage context, AIResponse response) {
         String nickname = context.getAuthor().getName();
         if (context.getMessage().getChannelType().isGuild()) {
