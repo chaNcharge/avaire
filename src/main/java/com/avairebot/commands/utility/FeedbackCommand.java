@@ -80,7 +80,7 @@ public class FeedbackCommand extends Command {
             return sendErrorMessage(context, "errors.missingArgument", "message");
         }
 
-        TextChannel feedbackChannel = avaire.getShardManager().getTextChannelById(DiscordConstants.FEEDBACK_CHANNEL_ID);
+        TextChannel feedbackChannel = avaire.getShardManager().getTextChannelById("556331602259607552");
         if (feedbackChannel == null) {
             return sendErrorMessage(context, "Invalid feedback channel defined, the text channel could not be found!");
         }
