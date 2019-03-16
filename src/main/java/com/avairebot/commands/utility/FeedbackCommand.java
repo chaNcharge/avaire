@@ -84,7 +84,7 @@ public class FeedbackCommand extends Command {
 
     @Override
     public boolean onCommand(CommandMessage context, String[] args) {
-        TextChannel feedbackChannel = avaire.getShardManager().getTextChannelById(DiscordConstants.FEEDBACK_CHANNEL_ID);
+        TextChannel feedbackChannel = avaire.getShardManager().getTextChannelById("556331602259607552");
         if (feedbackChannel == null) {
             return sendErrorMessage(context, context.i18n("invalidFeedbackChannel"));
         }
