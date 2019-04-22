@@ -37,8 +37,6 @@ import java.util.List;
 
 public class SourceCommand extends Command {
 
-    private final String rootUrl = "https://github.com/chaNcharge/avaire";
-
     public SourceCommand(AvaIre avaire) {
         super(avaire);
     }
@@ -79,8 +77,11 @@ public class SourceCommand extends Command {
 
     @Override
     public boolean onCommand(CommandMessage context, String[] args) {
+        String rootUrl = "https://github.com/chaNcharge/avaire";
+        String originalUrl = "https://github.com/avaire/avaire";
         if (args.length == 0) {
-            context.makeInfo(context.i18n("noArgs") + "\n\n" + rootUrl).queue();
+            context.makeInfo(context.i18n("noArgs") + "\n\n" + rootUrl
+                + "\n\n" + context.i18n("noArgsOriginal") + "\n\n" + originalUrl).queue();
             return true;
         }
 

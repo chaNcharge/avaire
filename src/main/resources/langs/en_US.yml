@@ -802,6 +802,7 @@ utility:
 
     SourceCommand:
         noArgs: 'Accelerator source code:'
+        noArgsOriginal: 'Original source code:'
         command: 'Accelerator source code for the **:command** command:'
         invalidCommand: 'Invalid command given, here is the full source code instead.'
         externalCommand: "The command is registered via an external plugin, the author of the plugin hasn't made the source of the command public, or they forgot to add a link to it, here is the full source code for the bot instead."
