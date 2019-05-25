@@ -157,9 +157,7 @@ public class LeaderboardCommand extends Command {
 
         PlaceholderMessage message = context.makeInfo(String.join("\n", messages))
             .setTitle("\uD83C\uDFC6 " +
-                    context.i18n("title", context.getGuild().getName()),
-                "https://avairebot.com/leaderboard/" + context.getGuild().getId()
-            )
+                    context.i18n("title", context.getGuild().getName()))
             .requestedBy(context.getMember());
 
         Collection userRank = loadUserRank(context);

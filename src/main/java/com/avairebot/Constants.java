@@ -61,5 +61,5 @@ public class Constants {
     public static final String AUDIO_HAS_SENT_NOW_PLAYING_METADATA = "has-sent-now-playing";
 
     // Command source link
-    public static final String SOURCE_URI = "https://github.com/avaire/avaire/tree/master/src/main/java/com/avairebot/commands/%s/%s.java";
+    public static final String SOURCE_URI = "https://github.com/chaNcharge/avaire/tree/master/src/main/java/com/avairebot/commands/%s/%s.java";
 }
