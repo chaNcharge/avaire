@@ -131,7 +131,7 @@ public class GuildMusicManager extends Evalable {
 
             ScheduleHandler.getScheduler().schedule(() -> {
                 getPlayer().setVolume(defaultVolume);
-            }, 1000, TimeUnit.MILLISECONDS);
+            }, 0, TimeUnit.MILLISECONDS);
         }
     }
 
