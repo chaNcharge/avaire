@@ -28,7 +28,6 @@ import com.avairebot.commands.CommandMessage;
 import com.avairebot.contracts.commands.Command;
 import com.avairebot.database.collection.Collection;
 import com.avairebot.factories.MessageFactory;
-import com.avairebot.shared.DiscordConstants;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import net.dv8tion.jda.core.entities.Guild;
