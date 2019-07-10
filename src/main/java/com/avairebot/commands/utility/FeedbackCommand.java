@@ -83,7 +83,9 @@ public class FeedbackCommand extends Command {
 
     @Override
     public boolean onCommand(CommandMessage context, String[] args) {
-        TextChannel feedbackChannel = avaire.getShardManager().getTextChannelById("556331602259607552");
+        TextChannel feedbackChannel = avaire.getShardManager().getTextChannelById(
+            avaire.getConstants().getFeedbackChannelId()
+        );
         if (feedbackChannel == null) {
             return sendErrorMessage(context, context.i18n("invalidFeedbackChannel"));
         }
