@@ -2,5 +2,4 @@ version: "1"
 rules:
   - base: raspberrypi
     upstream: avaire:master
-    autoMerge: true
-    autoMergeHardReset: false
+    mergeMethod: merge
