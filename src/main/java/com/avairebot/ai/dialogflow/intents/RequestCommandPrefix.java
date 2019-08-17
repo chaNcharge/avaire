@@ -19,43 +19,44 @@
  *
  */
 
-package com.avairebot.ai.intents;
+package com.avairebot.ai.dialogflow.intents;
 
 import ai.api.model.AIResponse;
 import com.avairebot.AvaIre;
+import com.avairebot.commands.Category;
+import com.avairebot.commands.CategoryHandler;
 import com.avairebot.commands.CommandMessage;
 import com.avairebot.contracts.ai.Intent;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.entities.Member;
 
-public class RequestOnlinePlayers extends Intent {
+import java.util.ArrayList;
+import java.util.List;
 
-    public RequestOnlinePlayers(AvaIre avaire) {
+@SuppressWarnings("unused")
+public class RequestCommandPrefix extends Intent {
+
+    public RequestCommandPrefix(AvaIre avaire) {
         super(avaire);
     }
 
     @Override
     public String getAction() {
-        return "request.online-players";
+        return "command.prefix";
     }
 
     @Override
     public void onIntent(CommandMessage context, AIResponse response) {
-        if (!context.getMessage().getChannelType().isGuild()) {
-            context.makeWarning("Right now it's just me and you online ;)").queue();
-            return;
+        List<String> prefixes = new ArrayList<>();
+        for (Category category : CategoryHandler.getValues()) {
+            if (category.isGlobal()) continue;
+
+            prefixes.add(
+                String.format("`%s` %s", category.getPrefix(context.getMessage()), category.getName())
+            );
         }
 
-        int online = 0;
-        for (Member member : context.getGuild().getMembers()) {
-            if (!member.getOnlineStatus().equals(OnlineStatus.OFFLINE)) {
-                online++;
-            }
-        }
-
-        context.makeInfo("There are **:online** people online out of **:total** people on the server.")
-            .set("online", online)
-            .set("total", context.getGuild().getMembers().size())
-            .queue();
+        context.makeSuccess(
+            "Here is all my prefixes for this server.\n\n" +
+                String.join("\n", prefixes)
+        ).queue();
     }
 }

@@ -19,35 +19,31 @@
  *
  */
 
-package com.avairebot.ai.intents;
+package com.avairebot.ai.dialogflow.intents;
 
 import ai.api.model.AIResponse;
 import com.avairebot.AvaIre;
+import com.avairebot.commands.CommandHandler;
 import com.avairebot.commands.CommandMessage;
+import com.avairebot.commands.fun.RandomDogCommand;
 import com.avairebot.contracts.ai.Intent;
-import com.avairebot.utilities.StringReplacementUtil;
 
-public class Unknown extends Intent {
+@SuppressWarnings("unused")
+public class RequestDog extends Intent {
 
-    public Unknown(AvaIre avaire) {
+    public RequestDog(AvaIre avaire) {
         super(avaire);
     }
 
     @Override
     public String getAction() {
-        return "input.unknown";
+        return "request.dog";
     }
 
     @Override
+    @SuppressWarnings({"SingleStatementInBlock", "ConstantConditions"})
     public void onIntent(CommandMessage context, AIResponse response) {
-        String nickname = context.getAuthor().getName();
-        if (context.getMessage().getChannelType().isGuild()) {
-            nickname = context.getMember().getEffectiveName();
-        }
-        context.makeWarning(
-            StringReplacementUtil.replaceAll(
-                response.getResult().getFulfillment().getSpeech(),
-                "%nick%", nickname
-            )).queue();
+        CommandHandler.getCommand(RandomDogCommand.class)
+            .getCommand().onCommand(new CommandMessage(context), new String[0]);
     }
 }

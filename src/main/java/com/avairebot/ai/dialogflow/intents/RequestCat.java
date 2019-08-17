@@ -19,7 +19,7 @@
  *
  */
 
-package com.avairebot.ai.intents;
+package com.avairebot.ai.dialogflow.intents;
 
 import ai.api.model.AIResponse;
 import com.avairebot.AvaIre;
@@ -29,6 +29,7 @@ import com.avairebot.commands.CommandMessage;
 import com.avairebot.commands.fun.RandomCatCommand;
 import com.avairebot.contracts.ai.Intent;
 
+@SuppressWarnings("unused")
 public class RequestCat extends Intent {
 
     public RequestCat(AvaIre avaire) {

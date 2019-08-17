@@ -19,7 +19,7 @@
  *
  */
 
-package com.avairebot.ai.intents;
+package com.avairebot.ai.dialogflow.intents;
 
 import ai.api.model.AIResponse;
 import com.avairebot.AvaIre;
@@ -27,15 +27,16 @@ import com.avairebot.commands.CommandMessage;
 import com.avairebot.contracts.ai.Intent;
 import com.avairebot.utilities.StringReplacementUtil;
 
-public class SmallTalk extends Intent {
+@SuppressWarnings("unused")
+public class Unknown extends Intent {
 
-    public SmallTalk(AvaIre avaire) {
+    public Unknown(AvaIre avaire) {
         super(avaire);
     }
 
     @Override
     public String getAction() {
-        return "smalltalk.*";
+        return "input.unknown";
     }
 
     @Override
@@ -44,10 +45,10 @@ public class SmallTalk extends Intent {
         if (context.getMessage().getChannelType().isGuild()) {
             nickname = context.getMember().getEffectiveName();
         }
-
-        context.makeInfo(StringReplacementUtil.replaceAll(
-            response.getResult().getFulfillment().getSpeech(),
-            "%nick%", nickname
-        )).queue();
+        context.makeWarning(
+            StringReplacementUtil.replaceAll(
+                response.getResult().getFulfillment().getSpeech(),
+                "%nick%", nickname
+            )).queue();
     }
 }
