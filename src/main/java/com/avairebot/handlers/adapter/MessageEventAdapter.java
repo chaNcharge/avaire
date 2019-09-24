@@ -148,7 +148,7 @@ public class MessageEventAdapter extends EventAdapter {
     }
 
     private boolean isValidMessage(User author) {
-        return !author.isBot() || author.getIdLong() == DiscordConstants.SENITHER_BOT_ID;
+        return !author.isBot() || author.getIdLong() == 486391016161542145;
     }
 
     private void invokeMiddlewareStack(MiddlewareStack stack) {
