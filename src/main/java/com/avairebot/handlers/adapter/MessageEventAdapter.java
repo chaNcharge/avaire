@@ -148,7 +148,7 @@ public class MessageEventAdapter extends EventAdapter {
     }
 
     private boolean isValidMessage(User author) {
-        return !author.isBot() || author.getIdLong() == 486391016161542145;
+        return !author.isBot() || author.getId().equals("486391016161542145");
     }
 
     private void invokeMiddlewareStack(MiddlewareStack stack) {
