@@ -123,7 +123,7 @@ public class LeaderboardCommand extends Command {
         }
 
         Collection collection = loadTop100From(context);
-        if (collection == null) {
+        if (collection == null || collection.isEmpty()) {
             context.makeWarning(context.i18n("noData")).queue();
             return false;
         }
@@ -198,7 +198,8 @@ public class LeaderboardCommand extends Command {
                     .get();
             } catch (SQLException e) {
                 log.error("Failed to fetch leaderboard data for server: " + context.getGuild().getId(), e);
-                return null;
+
+                return Collection.EMPTY_COLLECTION;
             }
         });
     }
@@ -216,7 +217,8 @@ public class LeaderboardCommand extends Command {
                 ));
             } catch (SQLException e) {
                 log.error("Failed to fetch leaderboard data for user: " + context.getGuild().getId(), e);
-                return null;
+
+                return Collection.EMPTY_COLLECTION;
             }
         });
     }
