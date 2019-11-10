@@ -1,4 +1,4 @@
-image: gradle:jdk8-slim
+image: gradle:jdk11-slim
 
 stages:
   - build
@@ -12,7 +12,7 @@ before_script:
 build:
   stage: build
   script:
-    - ./gradlew build
+    - ./gradlew assemble
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
