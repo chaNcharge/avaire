@@ -8,7 +8,6 @@ variables:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - chmod a+x gradlew
 
 build:
   stage: build
