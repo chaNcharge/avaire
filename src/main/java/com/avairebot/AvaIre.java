@@ -693,7 +693,8 @@ public class AvaIre {
             GatewayIntent.GUILD_INVITES,
             GatewayIntent.GUILD_MESSAGES,
             GatewayIntent.GUILD_MESSAGE_REACTIONS,
-            GatewayIntent.DIRECT_MESSAGES
+            GatewayIntent.DIRECT_MESSAGES,
+            GatewayIntent.GUILD_VOICE_STATES
         ))
             .setToken(getConfig().getString("discord.token"))
             .setSessionController(new SessionControllerAdapter())
@@ -701,7 +702,7 @@ public class AvaIre {
             .setBulkDeleteSplittingEnabled(false)
             .setMemberCachePolicy(MemberCachePolicy.ALL)
             .setChunkingFilter(ChunkingFilter.NONE)
-            .disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.CLIENT_STATUS)
+            .disableCache(CacheFlag.ACTIVITY, CacheFlag.CLIENT_STATUS)
             .setEnableShutdownHook(true)
             .setAutoReconnect(true)
             .setContextEnabled(true)
