@@ -55,9 +55,9 @@ public class Constants {
     public static final String PACKAGE_JOB_PATH = "com.avairebot.scheduler";
 
     // Emojis
-    public static final String EMOTE_ONLINE = "<:online:548980166282706955>";
-    public static final String EMOTE_AWAY = "<:away:548980166626377749>";
-    public static final String EMOTE_DND = "<:dnd:548980166223724577>";
+    public static final String EMOTE_ONLINE = "<:green_circle:679666667672174592>";
+    public static final String EMOTE_AWAY = "<:yellow_circle:679666871368417290>";
+    public static final String EMOTE_DND = "<:red_circle:6796668916982088550>";
 
     // Purchase Types
     public static final String RANK_BACKGROUND_PURCHASE_TYPE = "rank-background";
@@ -66,5 +66,5 @@ public class Constants {
     public static final String AUDIO_HAS_SENT_NOW_PLAYING_METADATA = "has-sent-now-playing";
 
     // Command source link
-    public static final String SOURCE_URI = "https://github.com/chaNcharge/avaire/tree/master/src/main/java/com/avairebot/commands/%s/%s.java";
+    public static final String SOURCE_URI = "https://github.com/avaire/avaire/tree/master/src/main/java/com/avairebot/commands/%s/%s.java";
 }
